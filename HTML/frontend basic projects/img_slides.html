@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css magic</title>
+    <style>
+        body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #121212;
+    }
+
+    .list {
+      display: flex;
+      gap: 5px;
+      padding: 20px;
+      background: #1a1a1a;
+      border-radius: 10px;
+      max-width: 90vw;
+    }
+
+    .item {
+      flex-shrink: 0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .item img {
+      height: 200px;
+      width: auto;
+      object-fit: cover;
+      display: block;
+    }
+/* strt trastions  */
+    .list{
+        transform-style: preserve-3d;
+        transform:perspective(1000px);
+    }
+    .list .item{
+        transition: .5s;
+        filter: brightness(0);
+    }
+    .list .item:hover{
+        filter: brightness(1);
+        transform: translatez(200px);
+    }
+    
+     .list .item:hover + *{
+        filter: brightness(0.6);
+        transform: translatez(150px) rotateY(40deg);
+    }
+    .list .item:hover + * + *{
+        filter: brightness(0.4);
+        transform: translatez(70px) rotateY(20deg);
+    }
+    /* left ke liye has */
+    .list .item:hover + * + * + *{
+        filter: brightness(0.2);
+        transform: translatez(30px) rotateY(10deg);
+    }
+    .list .item:has(+ *:hover){
+        filter: brightness(0.6);
+        transform: translatez(150px) rotateY(-40deg);
+    }
+    .list .item:has(+ * + *:hover){
+        filter: brightness(0.6);
+        transform: translatez(70px) rotateY(-20deg);
+    }
+    .list .item:has(+ * + * + *:hover){
+        filter: brightness(0.6);
+        transform: translatez(30px) rotateY(-10deg);
+    }
+    
+    
+    </style>
+</head>
+<body>
+    <div class="list">
+        <div class="item"><img src="https://i.pinimg.com/736x/2d/6a/96/2d6a96aa9b94167e6bc95dec4f0751fa.jpg" alt=""></div>
+        <div class="item"><img src="https://i.pinimg.com/1200x/8c/09/8b/8c098bed6f8507e53fcefff83e73d805.jpg" alt=""></div>
+        <div class="item"><img src="https://i.pinimg.com/736x/3c/6a/b0/3c6ab05e7ee635e91a3d921b2a405c61.jpg" alt=""></div>
+        <div class="item"><img src="https://i.pinimg.com/736x/a4/6d/74/a46d74d1eceee056ac2f766bba508e2a.jpg" alt=""></div>
+        <div class="item"><img src="https://i.pinimg.com/736x/84/be/bb/84bebb25f8a1899be84605e9d817ed76.jpg" alt=""></div>
+        <div class="item"><img src="https://i.pinimg.com/736x/8f/4b/ee/8f4beee47a8fabad71f5861fee7111d6.jpg" alt=""></div>
+        <div class="item"><img src="https://i.pinimg.com/736x/32/1e/04/321e049fb999265331826f851d2585eb.jpg" alt=""></div>
+        <div class="item"><img src="https://i.pinimg.com/1200x/6f/3e/90/6f3e9059d784317eb8e5e2c34d0c4bf3.jpg" alt=""></div>
+        <div class="item"><img src="https://i.pinimg.com/736x/d8/9c/eb/d89cebfba9159ea9fb3aafbc3d77323b.jpg" alt=""></div>
+        <div class="item"><img src="https://i.pinimg.com/736x/70/6a/6a/706a6abeac4002f70f61f374c4fbc8b6.jpg" alt=""></div>
+    </div>
+</body>
+</html>
